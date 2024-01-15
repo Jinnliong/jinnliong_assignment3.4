@@ -1,13 +1,13 @@
 # jinnliong_assignment3.4
-#SCPT CLOUD INFRASTRUCTURE ENGINEERING
-## Objective
+# _SCPT CLOUD INFRASTRUCTURE ENGINEERING_
+## Objectives
 - Create a simple "Hello World" application in a python.
 - Use Docker to create a container image of the "Hello World" application.
 - Use the command line to run the container and verify that the application works as expected.
 
 ## Steps
 1. Create app.py and type in the contents below
-# Simple web application using Flask framework
+### Simple web application using Flask framework
 from flask import Flask
 
 import os
@@ -23,12 +23,12 @@ if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
 
 2. Run the below command to ensure "Hello, World" display in the command line
-'''sh
+```sh
 python3 hello_world.py
-'''
+```
 
 3. Create the Dockerfile and type in the below contents.
-# Using latest base image  from DockerHub
+### Using latest base image  from DockerHub
 FROM python:latest
 
 #Creating working directory inside container
@@ -62,7 +62,7 @@ terraform {
   }
 }
 
-# Configure the docker provider
+### Configure the docker provider
 terraform {
   required_providers {
     # We recommend pinning to the specific version of the Docker Provider you're using
@@ -74,7 +74,7 @@ terraform {
   }
 }
 
-# Configure the docker provider
+### Configure the docker provider
 provider "docker" {
 }
 
@@ -96,47 +96,47 @@ resource "docker_container" "app_container" {
 }
 
 6. Run the terraform code.
-'''sh
+```sh
 terraform init
 terraform fmt
 terraform validate
 terraform plan
 terraform apply
-'''
+```
 
 7. Otherwise run the command below manually to run the docker app.
 Build a docker image locally 
-'''sh
+```sh
 docker build -t flask-app .
-'''
+```
 
 Listing your built images 
-'''sh
+```sh
 docker images
-'''
+```
 
 Starting your local container with port mapping from host port to container port(-p) and in detached mode(-d)
-'''sh
+```sh
 docker run -d -p 8080:8080 flask-app
-'''
+```
 
 List your running containers
-'''sh
+```sh
 docker ps
-'''
+```
 
 List all your containers(Running and stopped)
-'''sh
+```sh
 docker ps -a
-'''sh
+```sh
 
 To stop and remove your container
-'''sh
+```sh
 docker stop <container ID>
 docker rm <container ID>
-'''
+```
 
 To remove your docker images
-'''sh
+```sh
 docker rmi <image ID>
-'''
+```
